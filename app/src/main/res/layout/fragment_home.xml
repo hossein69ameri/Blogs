@@ -8,6 +8,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/ScrollLay"
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/_8mdp"
@@ -34,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16mdp"
-                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginTop="@dimen/_4mdp"
                 android:text="@string/latest_blogs"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18mdp"
@@ -56,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16mdp"
-                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginTop="@dimen/_4mdp"
                 android:text="@string/popular_blogs"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18mdp"

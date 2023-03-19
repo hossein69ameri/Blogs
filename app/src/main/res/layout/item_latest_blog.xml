@@ -10,11 +10,12 @@
         android:layout_width="@dimen/_150mdp"
         android:layout_height="@dimen/_150mdp"
         android:layout_margin="@dimen/_5mdp"
-        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title_latest_blog"
