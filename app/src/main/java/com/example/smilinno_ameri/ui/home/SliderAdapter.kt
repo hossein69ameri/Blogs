@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.smilinno_ameri.databinding.ImageSliderItemBinding
+import com.example.smilinno_ameri.model.ResponseLatest
 import com.example.smilinno_ameri.model.ResponseSliders
 import com.example.smilinno_ameri.model.ResponseSliders.ResponseSlidersItem
 import javax.inject.Inject
@@ -33,12 +34,26 @@ class SliderAdapter @Inject constructor() : RecyclerView.Adapter<SliderAdapter.V
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ResponseSlidersItem) {
-            binding.imgSlider.load(item.path){
-                crossfade(true)
-                crossfade(500)
+            binding.apply {
+                imgSlider.load(item.path){
+                    crossfade(true)
+                    crossfade(500)
+                }
+                titleSlider.text = item.title
+                //click
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
             }
-            binding.titleSlider.text = item.title
         }
+    }
+
+    private var onItemClickListener: ((ResponseSlidersItem) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (ResponseSlidersItem) -> Unit) {
+        onItemClickListener = listener
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<ResponseSlidersItem>() {

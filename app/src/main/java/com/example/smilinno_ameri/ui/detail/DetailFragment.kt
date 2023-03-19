@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.smilinno_ameri.R
 import com.example.smilinno_ameri.databinding.FragmentDetailBinding
@@ -63,6 +64,9 @@ class DetailFragment : Fragment() {
                                     authorDetail.text = it.data.author
                                 }
                                 detailAdapter.differ.submitList(it.data.comments)
+                                binding.recyclerDetail.layoutManager = LinearLayoutManager(requireContext())
+                                binding.recyclerDetail.adapter = detailAdapter
+                                Log.e("TAG", "size : ${it.data.comments!!.size} ", )
                             }
                         }
                         is NetworkResult.Error -> {
@@ -73,7 +77,6 @@ class DetailFragment : Fragment() {
                 }
             }
         }
-        binding.recyclerDetail.adapter = detailAdapter
 
     }
 

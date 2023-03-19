@@ -110,6 +110,10 @@ class HomeFragment : Fragment() {
             val direction = HomeFragmentDirections.actionHomeToDetail(it.id!!)
             findNavController().navigate(direction)
         }
+        sliderAdapter.setOnItemClickListener {
+            val direction = HomeFragmentDirections.actionHomeToDetail(it.id!!)
+            findNavController().navigate(direction)
+        }
 
     }
 }
