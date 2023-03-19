@@ -6,115 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/container_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/img_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/_8mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_150mdp"
-            android:layout_marginTop="@dimen/_8mdp"
-            android:layout_marginStart="@dimen/_16mdp"
-            android:layout_marginEnd="@dimen/_16mdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/title_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2mdp"
-            android:layout_marginEnd="@dimen/_8mdp"
-            android:ellipsize="end"
-            android:hint="@string/title3"
-            android:maxLines="1"
-            android:textSize="@dimen/_14mdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/date_detail"
-            app:layout_constraintStart_toStartOf="@+id/img_detail"
-            app:layout_constraintTop_toBottomOf="@+id/img_detail" />
+            <ImageView
+                android:id="@+id/img_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150mdp"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:layout_marginEnd="@dimen/_16mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/date_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_2mdp"
-            android:ellipsize="end"
-            android:gravity="end"
-            android:hint="@string/date3"
-            android:maxLines="1"
-            android:textSize="@dimen/_14mdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_detail"
-            app:layout_constraintTop_toBottomOf="@+id/img_detail" />
+            <TextView
+                android:id="@+id/title_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2mdp"
+                android:layout_marginEnd="@dimen/_8mdp"
+                android:ellipsize="end"
+                android:hint="@string/title3"
+                android:maxLines="1"
+                android:textSize="@dimen/_14mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/date_detail"
+                app:layout_constraintStart_toStartOf="@+id/img_detail"
+                app:layout_constraintTop_toBottomOf="@+id/img_detail" />
 
-        <TextView
-            android:id="@+id/body_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16mdp"
-            android:layout_marginStart="@dimen/_16mdp"
-            android:layout_marginEnd="@dimen/_16mdp"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center|start"
-            android:justificationMode="inter_word"
-            android:hint="@string/body"
-            android:textSize="@dimen/_16mdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_detail" />
+            <TextView
+                android:id="@+id/date_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2mdp"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:hint="@string/date3"
+                android:maxLines="1"
+                android:textSize="@dimen/_14mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/img_detail"
+                app:layout_constraintTop_toBottomOf="@+id/img_detail" />
 
-        <TextView
-            android:id="@+id/author_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8mdp"
-            android:layout_marginStart="@dimen/_16mdp"
-            android:layout_marginEnd="@dimen/_16mdp"
-            android:ellipsize="end"
-            android:hint="@string/author"
-            android:maxLines="1"
-            android:textSize="@dimen/_14mdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/body_detail" />
+            <TextView
+                android:id="@+id/body_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:layout_marginEnd="@dimen/_16mdp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center|start"
+                android:justificationMode="inter_word"
+                android:hint="@string/body"
+                android:textSize="@dimen/_16mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_detail" />
+
+            <TextView
+                android:id="@+id/author_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8mdp"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:layout_marginEnd="@dimen/_16mdp"
+                android:ellipsize="end"
+                android:hint="@string/author"
+                android:maxLines="1"
+                android:textSize="@dimen/_14mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/body_detail" />
 
 
-        <TextView
-            android:id="@+id/comment_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16mdp"
-            android:layout_marginTop="@dimen/_16mdp"
-            android:layout_marginEnd="@dimen/_16mdp"
-            android:ellipsize="end"
-            android:text="@string/comments"
-            android:textSize="@dimen/_14mdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/author_detail" />
+            <TextView
+                android:id="@+id/comment_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:layout_marginEnd="@dimen/_16mdp"
+                android:ellipsize="end"
+                android:text="@string/comments"
+                android:textSize="@dimen/_14mdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/author_detail" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_detail"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            tools:listitem="@layout/item_comment_detail"
-            android:layout_marginTop="@dimen/_8mdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/comment_detail" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_comment_detail"
+                android:layout_marginTop="@dimen/_8mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/comment_detail" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progress_detail"

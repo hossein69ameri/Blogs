@@ -40,10 +40,7 @@ class PopularAdapter @Inject constructor() : RecyclerView.Adapter<PopularAdapter
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ResponsePopularItem) {
             binding.apply {
-                imgPopularBlog.load(item.path){
-                    crossfade(true)
-                    crossfade(500)
-                }
+                imgPopularBlog.load(item.path)
                 titlePopularBlog.text = item.title
                 datePopularBlog.text = item.date
                 //click

@@ -43,10 +43,7 @@ class DetailAdapter @Inject constructor() : RecyclerView.Adapter<DetailAdapter.V
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: Comment) {
             binding.apply {
-                avatarCommentDetail.load(item.avatar){
-                    crossfade(true)
-                    crossfade(500)
-                }
+                avatarCommentDetail.load(item.avatar)
                 usernameCommentDetail.text = item.username
                 bodyCommentDetail.text = item.body
             }

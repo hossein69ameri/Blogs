@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(private val repository: DetailRepository) : ViewModel() {
 
-    //popular blog
+    //detail blog
     private val _DetailState : MutableStateFlow<NetworkResult<ResponseDetail>?> = MutableStateFlow(null)
     val detailState = _DetailState.asStateFlow()
 

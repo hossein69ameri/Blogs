@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
         homeViewModel.getSliders()
         homeViewModel.getLatest("Latest")
         homeViewModel.getPopular("Popular")
-
         //display slider
         lifecycleScope.launchWhenCreated {
             homeViewModel.slidersState.collectLatest {

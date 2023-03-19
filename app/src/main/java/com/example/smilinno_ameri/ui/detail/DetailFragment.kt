@@ -39,7 +39,6 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //get id
         blogID = args.blogID
-        Log.e("TAG", blogID.toString(), )
         //call api
         detailViewModel.postDetail(blogID)
         //display detail
@@ -57,16 +56,13 @@ class DetailFragment : Fragment() {
                                     titleDetail.text = it.data.title
                                     imgDetail.load(it.data.path)
                                     dateDetail.text = it.data.date
-                                    val dec = it.data.body?.let { it1 ->
-                                        Jsoup.parse(it1).text()
-                                    }
+                                    val dec = it.data.body?.let { it1 -> Jsoup.parse(it1).text() }
                                     bodyDetail.text = dec
                                     authorDetail.text = it.data.author
                                 }
                                 detailAdapter.differ.submitList(it.data.comments)
                                 binding.recyclerDetail.layoutManager = LinearLayoutManager(requireContext())
                                 binding.recyclerDetail.adapter = detailAdapter
-                                Log.e("TAG", "size : ${it.data.comments!!.size} ", )
                             }
                         }
                         is NetworkResult.Error -> {

@@ -35,10 +35,7 @@ class SliderAdapter @Inject constructor() : RecyclerView.Adapter<SliderAdapter.V
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ResponseSlidersItem) {
             binding.apply {
-                imgSlider.load(item.path){
-                    crossfade(true)
-                    crossfade(500)
-                }
+                imgSlider.load(item.path)
                 titleSlider.text = item.title
                 //click
                 root.setOnClickListener {

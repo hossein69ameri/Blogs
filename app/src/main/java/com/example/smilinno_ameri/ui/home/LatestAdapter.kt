@@ -37,10 +37,7 @@ class LatestAdapter @Inject constructor() : RecyclerView.Adapter<LatestAdapter.V
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ResponseLatestItem) {
             binding.apply {
-                imgLatestBlog.load(item.path){
-                    crossfade(true)
-                    crossfade(500)
-                }
+                imgLatestBlog.load(item.path)
                 titleLatestBlog.text = item.title
                 dateLatestBlog.text = item.date
                 //click
