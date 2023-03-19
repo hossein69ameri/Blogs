@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.smilinno_ameri.data.repository.HomeRepository
 import com.example.smilinno_ameri.model.ResponseLatest
+import com.example.smilinno_ameri.model.ResponsePopular
 import com.example.smilinno_ameri.model.ResponseSliders
 import com.example.smilinno_ameri.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +22,9 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     private val _LatestState : MutableStateFlow<NetworkResult<ResponseLatest>?> = MutableStateFlow(null)
     val latestState = _LatestState.asStateFlow()
 
+    private val _PopularState : MutableStateFlow<NetworkResult<ResponsePopular>?> = MutableStateFlow(null)
+    val popularState = _PopularState.asStateFlow()
+
     fun getSliders() = viewModelScope.launch {
         repository.getSliders().collect{
             _slidersState.value = it
@@ -30,6 +34,12 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     fun getLatest(sortType:String) = viewModelScope.launch {
         repository.getLatest(sortType).collect{
             _LatestState.value = it
+        }
+    }
+
+    fun getPopular(sortType:String) = viewModelScope.launch {
+        repository.getPopular(sortType).collect{
+            _PopularState.value = it
         }
     }
 

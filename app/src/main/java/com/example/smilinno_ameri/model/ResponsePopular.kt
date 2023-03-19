@@ -3,7 +3,7 @@ package com.example.smilinno_ameri.model
 
 import com.google.gson.annotations.SerializedName
 
-class ResponsePopular : ArrayList<ResponsePopularItem>(){
+class ResponsePopular : ArrayList<ResponsePopular.ResponsePopularItem>(){
     data class ResponsePopularItem(
         @SerializedName("date")
         val date: String?, // 2022-11-17T22:10:42

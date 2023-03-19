@@ -27,6 +27,9 @@ class HomeFragment : Fragment() {
     @Inject
     lateinit var latestAdapter: LatestAdapter
 
+    @Inject
+    lateinit var popularAdapter: PopularAdapter
+
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -38,6 +41,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel.getSliders()
         homeViewModel.getLatest("Latest")
+        homeViewModel.getPopular("Popular")
 
         lifecycleScope.launchWhenCreated {
             homeViewModel.slidersState.collectLatest {
@@ -81,5 +85,26 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        lifecycleScope.launchWhenCreated {
+            homeViewModel.popularState.collectLatest {
+                if (it != null) {
+                    when (it){
+                        is NetworkResult.Success -> {
+                            if (it.data != null){
+                                popularAdapter.differ.submitList(it.data)
+                                binding.recyclerPopular.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                                binding.recyclerPopular.adapter = popularAdapter
+                            }
+                        }
+                        is NetworkResult.Error -> {
+                            Snackbar.make(binding.root,"Error",Snackbar.LENGTH_SHORT).show()
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
+
     }
 }

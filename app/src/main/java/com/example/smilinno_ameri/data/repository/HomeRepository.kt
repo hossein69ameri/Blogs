@@ -2,6 +2,7 @@ package com.example.smilinno_ameri.data.repository
 
 import com.example.smilinno_ameri.data.source.RemoteDataSource
 import com.example.smilinno_ameri.model.ResponseLatest
+import com.example.smilinno_ameri.model.ResponsePopular
 import com.example.smilinno_ameri.model.ResponseSliders
 import com.example.smilinno_ameri.util.NetworkResponseCode
 import com.example.smilinno_ameri.util.NetworkResult
@@ -21,6 +22,12 @@ class HomeRepository @Inject constructor(private val remote: RemoteDataSource) {
     suspend fun getLatest(sortType:String) : Flow<NetworkResult<ResponseLatest>> {
         return flow {
             emit(NetworkResponseCode(remote.getLatest(sortType)).generalNetworkResponse())
+        }
+    }
+
+    suspend fun getPopular(sortType:String) : Flow<NetworkResult<ResponsePopular>> {
+        return flow {
+            emit(NetworkResponseCode(remote.getPopular(sortType)).generalNetworkResponse())
         }
     }
 
