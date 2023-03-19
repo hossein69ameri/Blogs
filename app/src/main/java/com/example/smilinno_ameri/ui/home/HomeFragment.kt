@@ -20,16 +20,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
-    @Inject
-    lateinit var sliderAdapter: SliderAdapter
-
-    @Inject
-    lateinit var latestAdapter: LatestAdapter
-
-    @Inject
-    lateinit var popularAdapter: PopularAdapter
-
+    @Inject lateinit var sliderAdapter: SliderAdapter
+    @Inject lateinit var latestAdapter: LatestAdapter
+    @Inject lateinit var popularAdapter: PopularAdapter
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -39,66 +32,68 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //call api
         homeViewModel.getSliders()
         homeViewModel.getLatest("Latest")
         homeViewModel.getPopular("Popular")
 
+        //display slider
         lifecycleScope.launchWhenCreated {
             homeViewModel.slidersState.collectLatest {
                 if (it != null) {
-                    when (it){
+                    when (it) {
                         is NetworkResult.Loading -> {
-                            binding.progressHome.isVisible(true,binding.viewPager)
+                            binding.progressHome.isVisible(true, binding.ScrollLay)
                         }
                         is NetworkResult.Success -> {
-                            binding.progressHome.isVisible(false,binding.viewPager)
-                            if (it.data != null){
-                            sliderAdapter.differ.submitList(it.data)
+                            binding.progressHome.isVisible(false, binding.ScrollLay)
+                            if (it.data != null) {
+                                sliderAdapter.differ.submitList(it.data)
                                 binding.viewPager.adapter = sliderAdapter
                             }
                         }
                         is NetworkResult.Error -> {
-                            binding.progressHome.isVisible(false,binding.viewPager)
-
+                            binding.progressHome.isVisible(false, binding.ScrollLay)
+                            Snackbar.make(binding.root, "Error", Snackbar.LENGTH_SHORT).show()
                         }
                     }
                 }
             }
         }
-
+        //display latest blog
         lifecycleScope.launchWhenCreated {
             homeViewModel.latestState.collectLatest {
                 if (it != null) {
-                    when (it){
+                    when (it) {
                         is NetworkResult.Success -> {
-                            if (it.data != null){
+                            if (it.data != null) {
                                 latestAdapter.differ.submitList(it.data)
-                                binding.recyclerLatest.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                                binding.recyclerLatest.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                                 binding.recyclerLatest.adapter = latestAdapter
                             }
                         }
                         is NetworkResult.Error -> {
-                             Snackbar.make(binding.root,"Error",Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(binding.root, "Error", Snackbar.LENGTH_SHORT).show()
                         }
                         else -> {}
                     }
                 }
             }
         }
-
+        //display popular blog
         lifecycleScope.launchWhenCreated {
             homeViewModel.popularState.collectLatest {
                 if (it != null) {
-                    when (it){
+                    when (it) {
                         is NetworkResult.Success -> {
-                            if (it.data != null){
+                            if (it.data != null) {
                                 popularAdapter.differ.submitList(it.data)
-                                binding.recyclerPopular.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+                                binding.recyclerPopular.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                                 binding.recyclerPopular.adapter = popularAdapter
                             }
                         }
                         is NetworkResult.Error -> {
-                            Snackbar.make(binding.root,"Error",Snackbar.LENGTH_SHORT).show()
+                            Snackbar.make(binding.root, "Error", Snackbar.LENGTH_SHORT).show()
                         }
                         else -> {}
                     }

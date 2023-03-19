@@ -9,14 +9,13 @@ import retrofit2.http.Query
 
 interface ApiServices {
 
+    //slider
     @GET("/api/v1/sliders")
     suspend fun getSliders(): Response<ResponseSliders>
-
-
+    //latest blog
     @GET("/api/v1/blogs")
     suspend fun getLatest(@Query("sortType") sortType: String): Response<ResponseLatest>
-
-
+    //popular blog
     @GET("/api/v1/blogs")
     suspend fun getPopular(@Query("sortType") sortType: String): Response<ResponsePopular>
 }

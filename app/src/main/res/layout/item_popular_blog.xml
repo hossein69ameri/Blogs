@@ -7,11 +7,10 @@
 
     <ImageView
         android:id="@+id/img_popular_blog"
-        android:layout_width="@dimen/_80mdp"
-        android:layout_height="@dimen/_80mdp"
-        android:layout_marginStart="@dimen/_16mdp"
-        android:layout_marginEnd="@dimen/_16mdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="@dimen/_150mdp"
+        android:layout_height="@dimen/_150mdp"
+        android:layout_margin="@dimen/_5mdp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,24 +18,26 @@
 
     <TextView
         android:id="@+id/title_popular_blog"
-        android:layout_width="@dimen/_20mdp"
+        android:layout_width="@dimen/_70mdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_2mdp"
         android:ellipsize="end"
         android:hint="@string/title2"
         android:maxLines="1"
+        android:textSize="@dimen/_18mdp"
         app:layout_constraintStart_toStartOf="@+id/img_popular_blog"
         app:layout_constraintTop_toBottomOf="@+id/img_popular_blog" />
 
     <TextView
         android:id="@+id/date_popular_blog"
-        android:layout_width="@dimen/_20mdp"
+        android:layout_width="@dimen/_70mdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_2mdp"
         android:ellipsize="end"
         android:gravity="end"
         android:hint="@string/date"
         android:maxLines="1"
+        android:textSize="@dimen/_18mdp"
         app:layout_constraintEnd_toEndOf="@+id/img_popular_blog"
         app:layout_constraintTop_toBottomOf="@+id/img_popular_blog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

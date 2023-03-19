@@ -12,19 +12,20 @@ import javax.inject.Inject
 
 class HomeRepository @Inject constructor(private val remote: RemoteDataSource) {
 
+    //slider
     suspend fun getSliders() : Flow<NetworkResult<ResponseSliders>> {
         return flow {
             emit(NetworkResult.Loading())
             emit(NetworkResponseCode(remote.getSliders()).generalNetworkResponse())
         }
     }
-
+    //latest
     suspend fun getLatest(sortType:String) : Flow<NetworkResult<ResponseLatest>> {
         return flow {
             emit(NetworkResponseCode(remote.getLatest(sortType)).generalNetworkResponse())
         }
     }
-
+    //popular
     suspend fun getPopular(sortType:String) : Flow<NetworkResult<ResponsePopular>> {
         return flow {
             emit(NetworkResponseCode(remote.getPopular(sortType)).generalNetworkResponse())

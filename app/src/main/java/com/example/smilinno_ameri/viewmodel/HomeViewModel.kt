@@ -15,33 +15,37 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: HomeRepository) : ViewModel() {
-
+    //sliders
     private val _slidersState : MutableStateFlow<NetworkResult<ResponseSliders>?> = MutableStateFlow(null)
     val slidersState = _slidersState.asStateFlow()
-
-    private val _LatestState : MutableStateFlow<NetworkResult<ResponseLatest>?> = MutableStateFlow(null)
-    val latestState = _LatestState.asStateFlow()
-
-    private val _PopularState : MutableStateFlow<NetworkResult<ResponsePopular>?> = MutableStateFlow(null)
-    val popularState = _PopularState.asStateFlow()
 
     fun getSliders() = viewModelScope.launch {
         repository.getSliders().collect{
             _slidersState.value = it
         }
     }
+    //latest blog
+    private val _LatestState : MutableStateFlow<NetworkResult<ResponseLatest>?> = MutableStateFlow(null)
+    val latestState = _LatestState.asStateFlow()
 
     fun getLatest(sortType:String) = viewModelScope.launch {
         repository.getLatest(sortType).collect{
             _LatestState.value = it
         }
     }
+    //popular blog
+    private val _PopularState : MutableStateFlow<NetworkResult<ResponsePopular>?> = MutableStateFlow(null)
+    val popularState = _PopularState.asStateFlow()
 
     fun getPopular(sortType:String) = viewModelScope.launch {
         repository.getPopular(sortType).collect{
             _PopularState.value = it
         }
     }
+
+
+
+
 
 
 }
