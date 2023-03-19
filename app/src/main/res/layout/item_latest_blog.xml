@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_latest_blog"
+        android:layout_width="@dimen/_80mdp"
+        android:layout_height="@dimen/_80mdp"
+        android:layout_marginStart="@dimen/_16mdp"
+        android:layout_marginEnd="@dimen/_16mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/title_latest_blog"
+        android:layout_width="@dimen/_20mdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:ellipsize="end"
+        android:hint="@string/title2"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="@+id/img_latest_blog"
+        app:layout_constraintTop_toBottomOf="@+id/img_latest_blog" />
+
+    <TextView
+        android:id="@+id/date_latest_blog"
+        android:layout_width="@dimen/_20mdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:hint="@string/date"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="@+id/img_latest_blog"
+        app:layout_constraintTop_toBottomOf="@+id/img_latest_blog" />
+</androidx.constraintlayout.widget.ConstraintLayout>

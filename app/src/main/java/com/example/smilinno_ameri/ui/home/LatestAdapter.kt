@@ -8,16 +8,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.smilinno_ameri.databinding.ImageSliderItemBinding
+import com.example.smilinno_ameri.databinding.ItemLatestBlogBinding
+import com.example.smilinno_ameri.model.ResponseLatest
+import com.example.smilinno_ameri.model.ResponseLatest.ResponseLatestItem
 import com.example.smilinno_ameri.model.ResponseSliders
 import com.example.smilinno_ameri.model.ResponseSliders.ResponseSlidersItem
 import javax.inject.Inject
 
-class SliderAdapter @Inject constructor() : RecyclerView.Adapter<SliderAdapter.ViewHolder>() {
-    private lateinit var binding : ImageSliderItemBinding
+class LatestAdapter @Inject constructor() : RecyclerView.Adapter<LatestAdapter.ViewHolder>() {
+    private lateinit var binding : ItemLatestBlogBinding
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = ImageSliderItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemLatestBlogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder()
     }
 
@@ -32,21 +35,22 @@ class SliderAdapter @Inject constructor() : RecyclerView.Adapter<SliderAdapter.V
 
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
-        fun setData(item: ResponseSlidersItem) {
-            binding.imgSlider.load(item.path){
+        fun setData(item: ResponseLatestItem) {
+            binding.imgLatestBlog.load(item.path){
                 crossfade(true)
                 crossfade(500)
             }
-            binding.titleSlider.text = item.title
+            binding.titleLatestBlog.text = item.title
+            binding.dateLatestBlog.text = item.date
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<ResponseSlidersItem>() {
-        override fun areItemsTheSame(oldItem: ResponseSlidersItem, newItem: ResponseSlidersItem): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<ResponseLatestItem>() {
+        override fun areItemsTheSame(oldItem: ResponseLatestItem, newItem: ResponseLatestItem): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: ResponseSlidersItem, newItem: ResponseSlidersItem): Boolean {
+        override fun areContentsTheSame(oldItem: ResponseLatestItem, newItem: ResponseLatestItem): Boolean {
             return oldItem == newItem
         }
     }

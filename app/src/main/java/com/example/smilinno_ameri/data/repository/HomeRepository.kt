@@ -1,6 +1,7 @@
 package com.example.smilinno_ameri.data.repository
 
 import com.example.smilinno_ameri.data.source.RemoteDataSource
+import com.example.smilinno_ameri.model.ResponseLatest
 import com.example.smilinno_ameri.model.ResponseSliders
 import com.example.smilinno_ameri.util.NetworkResponseCode
 import com.example.smilinno_ameri.util.NetworkResult
@@ -16,4 +17,11 @@ class HomeRepository @Inject constructor(private val remote: RemoteDataSource) {
             emit(NetworkResponseCode(remote.getSliders()).generalNetworkResponse())
         }
     }
+
+    suspend fun getLatest(sortType:String) : Flow<NetworkResult<ResponseLatest>> {
+        return flow {
+            emit(NetworkResponseCode(remote.getLatest(sortType)).generalNetworkResponse())
+        }
+    }
+
 }

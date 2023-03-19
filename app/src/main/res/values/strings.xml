@@ -2,4 +2,9 @@
     <string name="app_name">Smilinno_Ameri</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="latest_blogs">Latest Blogs</string>
+    <string name="title2">Title</string>
+    <string name="date">Date</string>
+    <string name="popular_blogs">Popular Blogs</string>
 </resources>
