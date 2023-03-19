@@ -7,4 +7,11 @@
     <string name="title2">Title</string>
     <string name="date">Date</string>
     <string name="popular_blogs">Popular Blogs</string>
+    <string name="date3">Date</string>
+    <string name="title3">Title</string>
+    <string name="body">Body</string>
+    <string name="author">Author</string>
+    <string name="comments">Comments</string>
+    <string name="username">Username</string>
+    <string name="body2">Body</string>
 </resources>

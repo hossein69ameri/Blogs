@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/avatar_comment_detail"
+        android:layout_width="@dimen/_40mdp"
+        android:layout_height="@dimen/_40mdp"
+        android:layout_margin="@dimen/_8mdp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username_comment_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8mdp"
+        android:layout_marginEnd="@dimen/_16mdp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:hint="@string/username"
+        android:textSize="@dimen/_16mdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_comment_detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatar_comment_detail"
+        app:layout_constraintTop_toTopOf="@+id/avatar_comment_detail" />
+
+    <TextView
+        android:id="@+id/body_comment_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginEnd="@dimen/_16mdp"
+        android:layout_marginBottom="@dimen/_8mdp"
+        android:ellipsize="end"
+        android:hint="@string/body2"
+        android:maxLines="1"
+        android:textSize="@dimen/_16mdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/avatar_comment_detail"
+        app:layout_constraintTop_toBottomOf="@+id/avatar_comment_detail" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/body_comment_detail" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

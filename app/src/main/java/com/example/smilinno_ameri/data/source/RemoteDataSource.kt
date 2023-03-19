@@ -10,4 +10,6 @@ class RemoteDataSource @Inject constructor(private val api: ApiServices) {
     suspend fun getLatest(sortType:String) = api.getLatest(sortType)
     //popular
     suspend fun getPopular(sortType:String) = api.getPopular(sortType)
+    //post detail
+    suspend fun postDetail(id:Int) = api.postDetail(id)
 }

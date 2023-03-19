@@ -42,10 +42,4 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
             _PopularState.value = it
         }
     }
-
-
-
-
-
-
 }

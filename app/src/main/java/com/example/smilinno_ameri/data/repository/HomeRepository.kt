@@ -1,6 +1,7 @@
 package com.example.smilinno_ameri.data.repository
 
 import com.example.smilinno_ameri.data.source.RemoteDataSource
+import com.example.smilinno_ameri.model.ResponseDetail
 import com.example.smilinno_ameri.model.ResponseLatest
 import com.example.smilinno_ameri.model.ResponsePopular
 import com.example.smilinno_ameri.model.ResponseSliders
@@ -31,5 +32,4 @@ class HomeRepository @Inject constructor(private val remote: RemoteDataSource) {
             emit(NetworkResponseCode(remote.getPopular(sortType)).generalNetworkResponse())
         }
     }
-
 }

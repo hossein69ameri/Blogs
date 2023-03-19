@@ -39,13 +39,28 @@ class PopularAdapter @Inject constructor() : RecyclerView.Adapter<PopularAdapter
 
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ResponsePopularItem) {
-            binding.imgPopularBlog.load(item.path){
-                crossfade(true)
-                crossfade(500)
+            binding.apply {
+                imgPopularBlog.load(item.path){
+                    crossfade(true)
+                    crossfade(500)
+                }
+                titlePopularBlog.text = item.title
+                datePopularBlog.text = item.date
+                //click
+                root.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
             }
-            binding.titlePopularBlog.text = item.title
-            binding.datePopularBlog.text = item.date
+
         }
+    }
+
+    private var onItemClickListener: ((ResponsePopularItem) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (ResponsePopularItem) -> Unit) {
+        onItemClickListener = listener
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<ResponsePopularItem>() {

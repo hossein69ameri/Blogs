@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smilinno_ameri.databinding.FragmentHomeBinding
 import com.example.smilinno_ameri.util.NetworkResult
@@ -99,6 +100,15 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+        }
+        //click
+        latestAdapter.setOnItemClickListener {
+            val direction = HomeFragmentDirections.actionHomeToDetail(it.id!!)
+            findNavController().navigate(direction)
+        }
+        popularAdapter.setOnItemClickListener {
+            val direction = HomeFragmentDirections.actionHomeToDetail(it.id!!)
+            findNavController().navigate(direction)
         }
 
     }
